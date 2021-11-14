@@ -11,7 +11,7 @@ import (
 var database *gorm.DB
 
 func Connect() {
-	dsn := "root:@tcp(127.0.0.1:3306)/entertainme?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "admin:123123123@tcp(first-database.cobquwjdlho5.ap-southeast-1.rds.amazonaws.com)/entertainme?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatal("DB connection failed!")
