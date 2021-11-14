@@ -2,8 +2,11 @@ package config
 
 import (
 	"entertaime-server/models/movie"
+	"fmt"
 	"log"
+	"os"
 
+	"github.com/joho/godotenv"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -11,7 +14,15 @@ import (
 var database *gorm.DB
 
 func Connect() {
-	dsn := "admin:123123123@tcp(first-database.cobquwjdlho5.ap-southeast-1.rds.amazonaws.com)/entertainme?charset=utf8mb4&parseTime=True&loc=Local"
+	godotenv.Load()
+	db_username := os.Getenv("DB_USERNAME")
+	db_pass := os.Getenv("DB_PASS")
+	db_host := os.Getenv("DB_HOST")
+
+	dsn := fmt.Sprintf(
+		"%s:%s@tcp(%s)/entertainme?charset=utf8mb4&parseTime=True&loc=Local",
+		db_username, db_pass, db_host,
+	)
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatal("DB connection failed!")
