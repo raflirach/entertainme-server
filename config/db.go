@@ -2,6 +2,7 @@ package config
 
 import (
 	"entertaime-server/models/movie"
+	"entertaime-server/models/series"
 	"fmt"
 	"log"
 	"os"
@@ -29,6 +30,7 @@ func Connect() {
 	}
 
 	db.AutoMigrate(&movie.Movie{})
+	db.AutoMigrate(&series.Series{})
 	database = db
 }
 

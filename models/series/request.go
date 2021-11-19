@@ -1,8 +1,8 @@
-package movie
+package series
 
 import "gorm.io/datatypes"
 
-type MovieRequest struct {
+type SeriesRequest struct {
 	Title      string         `json:"title" binding:"required"`
 	Overview   string         `json:"overview"`
 	PosterPath string         `json:"poster_path"`

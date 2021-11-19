@@ -21,6 +21,7 @@ func RunRouter() {
 	})
 
 	GetMovieRouter(router)
+	GetSeriesRouter(router)
 
 	router.Run()
 }
